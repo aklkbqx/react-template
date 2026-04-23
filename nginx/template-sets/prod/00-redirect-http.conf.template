@@ -1,0 +1,5 @@
+server {
+    listen 80;
+    server_name ${DOMAIN} api.${DOMAIN} ${ADMIN_HOST};
+    return 301 https://$host$request_uri;
+}

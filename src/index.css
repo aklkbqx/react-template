@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "@heroui/react/styles";
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+  --color-admin-950: #111827;
+  --color-admin-900: #1f2937;
+  --color-user-50: #f8fafc;
+  --color-user-100: #eef2ff;
+  --color-brand-admin: #14b8a6;
+  --color-brand-user: #2563eb;
+}
+
+:root {
+  color: #0f172a;
+  background: #f8fafc;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 28%),
+    linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.admin-surface {
+  background:
+    radial-gradient(circle at top left, rgba(20, 184, 166, 0.12), transparent 24%),
+    linear-gradient(180deg, #0f172a 0%, #111827 100%);
+}
+
+.user-surface {
+  background:
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.14), transparent 25%),
+    linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+}
