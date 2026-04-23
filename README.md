@@ -1,55 +1,47 @@
-# Frontend Project Setup
+# Frontend Bet
 
-Starter project rebuilt around separated `site` and `admin` application shells using React, TypeScript, Tailwind CSS v4, and HeroUI.
+Frontend แยกเป็น 2 ฝั่ง:
 
-## Available scripts
+- `site` สำหรับหน้า public ที่ `:3005`
+- `admin` สำหรับหลังบ้านที่ `:3006`
 
-- `bun install`
-- `bun run dev`
-- `bun run dev:dual`
-- `bun run dev:site`
-- `bun run dev:admin`
-- `bun run build`
-- `bun run lint`
-- `bun run preview:site`
-- `bun run preview:admin`
+## Run
 
-## Env Files
-
-- `.env.example`: team template for required keys
-- `.env`: shared project values used by local scripts
-- `.env.development`: machine-specific local dev values
-- `.env.production`: production site/admin origins plus nginx deployment values
-
-## Env Setup
-
-1. Start from `.env.example`.
-2. Keep `.env.development` as the real values for your machine, especially local IP and preferred admin subdomain.
-3. Keep `.env.production` for deploy-time values only.
-
-## Active structure
-
-```text
-src/
-  app/
-    providers/
-    runtime/
-  features/
-    admin/
-    user/
-  shared/
-    lib/
-    types/
-    ui/
-  admin/
-  site/
-  index.css
+```bash
+bun install
+bun run dev
 ```
 
-## Notes
+หรือรันแยก:
 
-- The old business-specific app surface was removed from active use.
-- `site` and `admin` still build separately, but now share one `index.html` and one `src/main.tsx`.
-- Public and admin now separate by origin, with runtime redirects sending wrong-host access to the correct app origin.
-- Shared UI lives in `src/shared/ui` and uses HeroUI plus Tailwind.
-- Shared libraries remain available: React Router, React Query, Axios, i18n, and a socket starter provider.
+```bash
+bun run dev:site
+bun run dev:admin
+```
+
+## Build
+
+```bash
+bun run build
+```
+
+## Env
+
+- `.env.example` ใช้เป็น template สำหรับทีม
+- `.env` ใช้ค่ากลางของโปรเจกต์
+- `.env.development` ใช้ค่าของเครื่องตัวเอง
+- `.env.production` ใช้สำหรับ production/deploy
+
+ค่าหลักที่ต้องตั้ง:
+
+- `VITE_SITE_ORIGIN`
+- `VITE_SITE_ALLOWED_ORIGINS`
+- `VITE_ADMIN_ORIGIN`
+- `VITE_ADMIN_ALLOWED_ORIGINS`
+- `VITE_API_BASE_URL`
+
+## Routing
+
+- ถ้าเข้า `site` ด้วย admin origin ระบบจะ redirect ไปฝั่ง admin
+- ถ้าเข้า `admin` โดยยังไม่ login ระบบจะไป `/login`
+- รองรับ custom admin subdomain ผ่าน env ไม่ได้ล็อกว่าเป็น `bo`
